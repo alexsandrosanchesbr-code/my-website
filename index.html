@@ -379,4 +379,105 @@
           list = [`assets/sponsors/${name}.png`,`assets/images/sponsors/${name}.png`,`assets/${name}.png`];
         }
         // try load the list
-        tryLoadImag
+        tryLoadImage(list, (good)=>{
+          imgEl.src = good;
+          imgEl.style.opacity = '1';
+        }, ()=>{
+          // fallback: tiny transparent placeholder so layout is kept
+          imgEl.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="40"></svg>';
+          imgEl.style.opacity = '0.18';
+          console.warn('Sponsor image failed for', imgEl.alt, list);
+        });
+      });
+    })();
+
+    // Showcase slides: set backgrounds from data attributes with fallbacks
+    (function(){
+      const slides = document.querySelectorAll('.showcase-slide');
+      slides.forEach(sl=>{
+        const s1 = sl.dataset.src1 || '';
+        const s2 = sl.dataset.src2 || '';
+        const tries = [s1,s2].filter(Boolean);
+        if(!tries.length){
+          // default to real-estate if something missing
+          tries.push('assets/real-estate.jpg','assets/images/real-estate.jpg');
+        } else {
+          tries.push('assets/real-estate.jpg','assets/images/real-estate.jpg');
+        }
+        tryLoadImage(tries, (good)=>{
+          sl.style.backgroundImage = `url('${good}')`;
+        }, ()=>{ console.warn('Showcase slide failed to load any image'); });
+      });
+
+      let idx = 0;
+      const show = (i)=>{
+        slides.forEach((s,n)=> s.classList.toggle('active', n===i));
+      };
+      // controls
+      $('#prevShowcase')?.addEventListener('click', ()=>{ idx = (idx-1+slides.length)%slides.length; show(idx); });
+      $('#nextShowcase')?.addEventListener('click', ()=>{ idx = (idx+1)%slides.length; show(idx); });
+      setInterval(()=>{ idx = (idx+1)%slides.length; show(idx); }, 6000);
+      // start
+      show(0);
+    })();
+
+    // Email popup behavior: open after 8s, close on overlay click or ESC, hide after send
+    (function(){
+      const overlay = document.getElementById('emailOverlay');
+      const popup = document.getElementById('emailPopup');
+      const sendBtn = document.getElementById('sendEmailBtn');
+      const closeSmall = document.getElementById('closeEmailSmall');
+
+      function show(){ overlay.style.display='block'; popup.style.display='block'; popup.setAttribute('aria-hidden','false'); }
+      function hide(){ overlay.style.display='none'; popup.style.display='none'; popup.setAttribute('aria-hidden','true'); }
+
+      // show once after 8 seconds
+      setTimeout(()=>{ show(); }, 8000);
+
+      overlay.addEventListener('click', hide);
+      closeSmall.addEventListener('click', hide);
+      document.addEventListener('keydown', (e)=> { if(e.key === 'Escape') hide(); });
+
+      sendBtn.addEventListener('click', ()=>{
+        const email = (document.getElementById('emailHelp') || {}).value || '';
+        if(!email || !email.includes('@')){ alert('Please enter a valid email.'); return; }
+        // Use mailto for now (you can switch to EmailJS later)
+        window.location.href = `mailto:${encodeURIComponent(email)}?subject=${encodeURIComponent('Support request')}&body=${encodeURIComponent('Hello, I need help.')}`;
+        hide();
+      });
+    })();
+
+    // Defer Tawk.to load and ensure widget z-index is high so it appears above smaller overlays.
+    (function(){
+      // Delay load a little to ensure first paint is fast
+      window.addEventListener('load', ()=>{
+        setTimeout(function(){
+          try{
+            var s1=document.createElement("script"), s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/6927ec1d177985195e6b3689/1jb1v4kul';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+            // also try to ensure widget z-index is above common overlays (tawk sets its own z-index, but this helps)
+            s1.onload = function(){ 
+              try{ 
+                // if Tawk API available, adjust style on open (best-effort)
+                setTimeout(()=>{ 
+                  const node = document.querySelector('#tawkchat-minified-iframe') || document.querySelector('iframe[id^="tawk"]');
+                  if(node) node.style.zIndex = '20000';
+                }, 1000);
+              } catch(e){console.warn('tawk load callback error', e)}
+            };
+          } catch(err){
+            console.warn('Failed to inject Tawk script', err);
+          }
+        }, 900); // small delay
+      }, {once:true});
+    })();
+
+    // Small logging helper to help debug on mobile (open console via remote debugging if needed)
+    console.info('Index script loaded — image loader & UI fixes enabled.');
+  </script>
+</body>
+  </html>
