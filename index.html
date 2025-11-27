@@ -1,431 +1,235 @@
-<!-- File: index.html -->
-<!doctype html>
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Investimentos AlexSanches — Luxurious Wealth & Strategy</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investimentos de Alexsandro Sanches</title>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Premium Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <!-- Theme colors for social previews -->
-  <meta name="theme-color" content="#001F3F">
-  <meta name="description" content="Investimentos AlexSanches — premium wealth strategies, financial planning, and private advisory.">
+    <!-- Global Styles -->
+    <style>
+        body {
+            margin: 0;
+            background-color: #001F3F;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+        }
 
-  <style>
-    /* ---------------------------
-       THEME: Navy (#001F3F) + Gold (#D4AF37)
-       Fonts: Playfair Display (titles) + Poppins (body)
-       --------------------------- */
-    :root{
-      --navy:#001F3F;
-      --navy-2:#01283d;
-      --gold:#D4AF37;
-      --white:#ffffff;
-      --muted:rgba(255,255,255,0.78);
-      --glass:rgba(255,255,255,0.03);
-      --radius:14px;
-      --maxw:1100px;
-      --ease:cubic-bezier(.2,.9,.3,1);
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial;
-      background:linear-gradient(180deg,var(--navy) 0%, #03293c 100%);
-      color:var(--white);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.5;
-      overflow-x:hidden;
-    }
-    .container{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+        header {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 999;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(6px);
+            transition: 0.4s ease;
+        }
 
-    /* Header / shrinking sticky */
-    header.site-header{
-      position:sticky;top:0;z-index:220;
-      background:linear-gradient(180deg, rgba(0,0,0,0.18), transparent);
-      backdrop-filter: blur(6px);
-      transition:padding .24s var(--ease), box-shadow .24s var(--ease);
-    }
-    .header-inner{display:flex;align-items:center;justify-content:space-between;padding:20px 0;transition:padding .24s var(--ease)}
-    .site-header.shrink .header-inner{padding:10px 0;box-shadow:0 6px 18px rgba(0,0,0,0.45)}
-    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--white)}
-    .logo-mark{
-      width:52px;height:52px;border-radius:12px;background:linear-gradient(180deg,var(--gold),#a67c2b);display:grid;place-items:center;font-family:'Playfair Display',serif;color:var(--navy);font-weight:700;font-size:20px;box-shadow:0 8px 26px rgba(0,0,0,0.5)
-    }
-    .brand-title{font-family:'Playfair Display',serif;font-weight:700;font-size:18px}
-    .brand-title span{color:var(--gold);margin-right:6px}
+        header.shrink {
+            padding: 5px 0;
+            background: rgba(0, 0, 0, 0.85);
+        }
 
-    /* Nav */
-    nav.primary-nav ul{list-style:none;margin:0;padding:0;display:flex;gap:16px;align-items:center}
-    nav.primary-nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:10px;transition:color .16s,var(--ease)}
-    nav.primary-nav a:hover{color:var(--white)}
-    .btn{display:inline-block;padding:10px 14px;border-radius:12px;font-weight:600;text-decoration:none}
-    .btn-gold{background:linear-gradient(180deg,var(--gold), #b38f3a);color:var(--navy)}
-    .btn-outline{border:1px solid rgba(255,255,255,0.08);color:var(--white);background:transparent}
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px;
+        }
 
-    /* Hamburger (mobile) */
-    .hamburger{display:none;background:none;border:0;width:46px;height:40px;position:relative}
-    .hamburger span{display:block;height:3px;background:var(--white);margin:6px 0;border-radius:3px;transition:transform .25s,var(--ease);opacity:.95}
-    .hamburger.open span:nth-child(1){transform:translateY(9px) rotate(45deg)}
-    .hamburger.open span:nth-child(2){opacity:0}
-    .hamburger.open span:nth-child(3){transform:translateY(-9px) rotate(-45deg)}
+        nav img {
+            height: 55px;
+        }
 
-    /* Mobile panel */
-    .mobile-panel{position:fixed;inset:0;top:76px;width:100%;transform:translateY(-120%);transition:transform .32s var(--ease);background:linear-gradient(180deg, rgba(0,0,0,0.86), rgba(0,0,0,0.92));z-index:210;padding-top:18px}
-    .mobile-panel.open{transform:translateY(0)}
-    .mobile-panel nav ul{flex-direction:column;gap:18px;padding:36px 20px;display:flex}
+        nav a {
+            color: white;
+            margin-left: 20px;
+            text-decoration: none;
+            font-weight: 500;
+        }
 
-    /* Hero */
-    .hero{position:relative;min-height:72vh;display:flex;align-items:center;overflow:hidden;padding-bottom:20px}
-    .hero-layers{
-      position:absolute;inset:0;pointer-events:none;overflow:hidden;
-      display:flex;align-items:center;justify-content:center;
-    }
-    /* decorative radial glow */
-    .hero-glow{
-      width:140%;height:140%;position:absolute;left:-20%;top:-20%;transform:translateZ(0) scale(1.03);
-      background:radial-gradient(closest-side, rgba(212,175,55,0.14), transparent 30%), radial-gradient(closest-side, rgba(255,255,255,0.02), transparent 40%);
-      mix-blend-mode:screen;filter:blur(40px);
-    }
-    /* subtle geometric SVG overlay */
-    .hero-graphic{
-      position:absolute;right:-10%;top:-15%;width:600px;height:600px;opacity:0.12;transform:rotate(14deg);
-    }
+        .hero {
+            margin-top: 120px;
+            text-align: center;
+            padding: 40px 20px;
+        }
 
-    .hero-content{position:relative;z-index:2;max-width:980px;margin:0 auto;padding:110px 20px 80px;text-align:center}
-    .eyebrow{font-size:13px;color:var(--gold);letter-spacing:1px;font-weight:600;text-transform:uppercase;margin-bottom:12px}
-    h1.headline{font-family:'Playfair Display',serif;font-weight:700;font-size:40px;margin:0 0 12px;line-height:1.02}
-    p.lead{font-size:16px;color:var(--muted);margin:0 auto 20px;max-width:720px}
-    .hero-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            color: #D4AF37;
+        }
 
-    /* Sections */
-    section{padding:48px 0}
-    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:22px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);box-shadow:0 14px 30px rgba(0,0,0,0.45);transition:transform .28s var(--ease)}
-    .card h3{font-family:'Playfair Display',serif;margin:0 0 8px}
-    .card p{margin:0;color:var(--muted);font-size:14px}
-    .card:hover{transform:translateY(-8px)}
+        .slider {
+            width: 95%;
+            max-width: 1100px;
+            margin: 30px auto;
+            border-radius: 18px;
+            overflow: hidden;
+        }
 
-    /* Showcase carousel */
-    .showcase{position:relative;border-radius:12px;overflow:hidden;margin-top:18px;height:300px}
-    .showcase-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transform:scale(1.04);transition:opacity .7s var(--ease), transform .7s var(--ease)}
-    .showcase-slide.active{opacity:1;transform:scale(1)}
-    .showcase-caption{position:absolute;left:24px;bottom:20px;background:linear-gradient(90deg, rgba(0,0,0,0.5), rgba(0,0,0,0.28));padding:10px 14px;border-radius:10px}
+        .slider img {
+            width: 100%;
+            display: block;
+        }
 
-    /* Teaser */
-    .teaser{display:flex;gap:24px;align-items:stretch}
-    .teaser .left{flex:1}
-    .teaser .right{flex:1;display:flex;align-items:center;justify-content:center}
-    .feature-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 70px;
+            height: 70px;
+            bottom: 25px;
+            right: 25px;
+            border-radius: 50%;
+            z-index: 999999;
+        }
 
-    /* Footer */
-    footer.site-footer{padding:24px 0;border-top:1px solid rgba(255,255,255,0.03)}
-    .ft{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
-    .ft a{color:var(--muted);text-decoration:none;font-size:14px}
+        .whatsapp-float img {
+            width: 100%;
+            height: 100%;
+        }
 
-    /* Auth quick UI (small) */
-    .auth-inline{display:flex;gap:10px;align-items:center}
+        /* Email Popup */
+        #emailPopup {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #ffffff;
+            color: #000;
+            padding: 20px;
+            text-align: center;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3);
+            z-index: 999999;
+            display: none;
+        }
 
-    /* Responsive */
-    @media (max-width:980px){
-      .services-grid{grid-template-columns:repeat(1,1fr)}
-      .teaser{flex-direction:column}
-      .hero-content{padding:80px 18px 50px}
-      .headline{font-size:32px}
-      .hamburger{display:block}
-      nav.primary-nav{display:none}
-      .hero-graphic{display:none}
-      .showcase{height:220px}
-    }
+        #emailPopup input {
+            width: 85%;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 8px;
+            border: 1px solid #001F3F;
+        }
 
-    /* Fade in utility */
-    .fadeIn{animation:fadeIn .9s ease both}
-    @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+        #emailPopup button {
+            margin-top: 12px;
+            background: #001F3F;
+            color: #D4AF37;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+        }
 
-    /* small polish */
-    .muted{color:var(--muted)}
-    .small{font-size:13px;color:var(--muted)}
-  </style>
+        #closePopup {
+            color: red;
+            font-weight: bold;
+            float: right;
+            font-size: 18px;
+            margin-top: -10px;
+        }
+
+    </style>
+
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/5521960105724" class="whatsapp-float" target="_blank">
+        <img src="assets/whatsapp.png" alt="WhatsApp">
+    </a>
+
+    <!-- Tawk.to Live Chat Script -->
+    <!-- Start of Tawk.to Script -->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/6927ec1d177985195e6b3689/1jb1v4kul';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <!-- End of Tawk.to Script -->
+
 </head>
+
 <body>
-  <!-- Header -->
-  <header class="site-header" id="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html" aria-label="Investimentos AlexSanches home">
-        <div class="logo-mark">A</div>
-        <div class="brand-title"><span>Investimentos</span>AlexSanches</div>
-      </a>
 
-      <nav class="primary-nav" aria-label="Primary navigation">
-        <ul>
-          <li><a href="index.html">Início</a></li>
-          <li><a href="about.html">Sobre</a></li>
-          <li><a href="contact.html">Contato</a></li>
-          <li><a href="dashboard.html" class="small">Dashboard</a></li>
-          <li><a href="login.html" class="btn btn-gold">Entrar</a></li>
-        </ul>
-      </nav>
-
-      <button id="hamburger" class="hamburger" aria-label="Abrir menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
-
-  <!-- Mobile nav -->
-  <div id="mobile-panel" class="mobile-panel" aria-hidden="true">
-    <nav>
-      <ul>
-        <li><a href="index.html">Início</a></li>
-        <li><a href="about.html">Sobre</a></li>
-        <li><a href="contact.html">Contato</a></li>
-        <li><a href="dashboard.html">Dashboard</a></li>
-        <li><a href="login.html" class="btn btn-gold">Entrar</a></li>
-      </ul>
-    </nav>
-  </div>
-
-  <!-- Hero -->
-  <main>
-    <section class="hero">
-      <div class="hero-layers" aria-hidden="true">
-        <div class="hero-glow" id="hero-glow"></div>
-        <!-- SVG abstract shape -->
-        <svg class="hero-graphic" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <defs>
-            <linearGradient id="g1" x1="0" x2="1">
-              <stop offset="0" stop-color="#D4AF37" stop-opacity="0.28"/>
-              <stop offset="1" stop-color="#D4AF37" stop-opacity="0.06"/>
-            </linearGradient>
-          </defs>
-          <path fill="url(#g1)" d="M420,20 C470,80 560,120 560,240 C560,420 420,520 260,520 C140,520 30,410 20,280 C10,150 120,40 260,40 C340,40 380,10 420,20Z"/>
-        </svg>
-      </div>
-
-      <div class="hero-content container fadeIn" id="hero-content">
-        <div class="eyebrow">Assessoria Privada • Planejamento • Investimentos</div>
-        <h1 class="headline">Investimentos <span style="color:var(--gold)">AlexSanches</span></h1>
-        <p class="lead">Soluções financeiras com presença de mercado e discrição. Planejamento personalizado, performance e confiança — para investidores que buscam excelência.</p>
-
-        <div class="hero-ctas">
-          <a class="btn btn-gold" href="contact.html">Solicitar Consulta</a>
-          <a class="btn btn-outline" href="about.html">Conheça nossa proposta</a>
-        </div>
-
-        <!-- small features -->
-        <div style="margin-top:22px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-          <div class="small muted">Confidencial • Estratégia personalizada</div>
-          <div class="small muted">Transparência • Segurança</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Services -->
-    <section class="container fadeIn">
-      <div style="display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap">
-        <div>
-          <h2 style="font-family:'Playfair Display',serif;margin:0 0 6px">Nossos Serviços</h2>
-          <div class="small muted">Soluções para patrimônio, investimentos e proteção financeira</div>
-        </div>
-        <div class="auth-inline">
-          <a class="small muted" href="login.html">Área do cliente</a>
-          <a class="small muted" href="register.html" style="margin-left:8px">Criar conta</a>
-        </div>
-      </div>
-
-      <div class="services-grid" style="margin-top:16px">
-        <div class="card">
-          <h3>Planejamento Patrimonial</h3>
-          <p>Estratégias de proteção e crescimento a longo prazo, com governança e visão global.</p>
-        </div>
-        <div class="card">
-          <h3>Gestão Discreta de Portfólios</h3>
-          <p>Alocação customizada com foco em preservação de capital e desempenho consistente.</p>
-        </div>
-        <div class="card">
-          <h3>Consultoria Tributária & Legal</h3>
-          <p>Estruturas eficientes para otimização tributária e conformidade legal.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Showcase -->
-    <section class="container fadeIn">
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
-        <div>
-          <h2 style="font-family:'Playfair Display',serif;margin:0 0 6px">Destaques</h2>
-          <div class="small muted">Casos, portfólio e experiências</div>
-        </div>
-        <div style="display:flex;gap:8px">
-          <button id="prevShowcase" aria-label="Anterior" style="background:transparent;border:0;color:var(--muted);font-size:20px">‹</button>
-          <button id="nextShowcase" aria-label="Próximo" style="background:transparent;border:0;color:var(--muted);font-size:20px">›</button>
-        </div>
-      </div>
-
-      <div class="showcase" id="showcase">
-        <div class="showcase-slide active" style="background:
-          linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.35)),
-          radial-gradient(600px 300px at 20% 30%, rgba(212,175,55,0.08), transparent 15%),
-          linear-gradient(90deg, rgba(0,0,0,0.05), rgba(0,0,0,0.12));
-          display:flex;align-items:center;justify-content:center;">
-          <div style="text-align:center;max-width:720px;padding:18px;">
-            <h3 style="font-family:'Playfair Display',serif;margin:0 0 8px">Dashboards Concierge</h3>
-            <div class="small muted">Relatórios claros e ações estratégicas para investidores exigentes.</div>
-          </div>
-        </div>
-
-        <div class="showcase-slide" style="background:
-          linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.35)),
-          radial-gradient(600px 300px at 80% 70%, rgba(212,175,55,0.08), transparent 15%);
-          display:flex;align-items:center;justify-content:center;">
-          <div style="text-align:center;max-width:720px;padding:18px;">
-            <h3 style="font-family:'Playfair Display',serif;margin:0 0 8px">Estratégias exclusivas</h3>
-            <div class="small muted">Acesso a oportunidades estruturadas e análises detalhadas.</div>
-          </div>
-        </div>
-
-        <div class="showcase-slide" style="background:
-          linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.35)),
-          radial-gradient(600px 300px at 40% 10%, rgba(212,175,55,0.08), transparent 15%);
-          display:flex;align-items:center;justify-content:center;">
-          <div style="text-align:center;max-width:720px;padding:18px;">
-            <h3 style="font-family:'Playfair Display',serif;margin:0 0 8px">Atendimento Privado</h3>
-            <div class="small muted">Comunicação exclusiva e relatórios periódicos.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Teaser / CTA -->
-    <section class="container fadeIn">
-      <div class="teaser">
-        <div class="left">
-          <h2 style="font-family:'Playfair Display',serif;margin:0 0 8px">Comece com uma consulta exclusiva</h2>
-          <p class="muted">Agende uma conversa. Vamos entender seus objetivos e desenhar um plano sob medida.</p>
-          <div style="margin-top:12px">
-            <a class="btn btn-gold" href="contact.html">Agendar Consulta</a>
-            <a class="btn btn-outline" href="about.html" style="margin-left:10px">Nossa Metodologia</a>
-          </div>
-        </div>
-        <div class="right">
-          <div class="feature-grid" style="width:100%">
-            <div class="card" style="padding:14px">
-              <strong>Performance</strong><div class="small muted">Relatórios claros</div>
+    <header id="header">
+        <nav>
+            <img src="assets/logo.png" alt="Logo">
+            <div>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="login.html">Login</a>
             </div>
-            <div class="card" style="padding:14px">
-              <strong>Confidencialidade</strong><div class="small muted">Atendimento privado</div>
-            </div>
-            <div class="card" style="padding:14px">
-              <strong>Governança</strong><div class="small muted">Processos robustos</div>
-            </div>
-            <div class="card" style="padding:14px">
-              <strong>Compliance</strong><div class="small muted">Segurança e conformidade</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer CTA -->
-    <section class="container footer-cta fadeIn" style="padding-top:28px;padding-bottom:28px;border-top:1px solid rgba(255,255,255,0.03)">
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
-        <div>
-          <h3 style="margin:0;font-family:'Playfair Display',serif">Pronto para elevar sua estratégia?</h3>
-          <div class="small muted">Converse com nossa equipe e receba uma proposta inicial.</div>
-        </div>
-        <div>
-          <a class="btn btn-outline" href="contact.html">Entrar em contato</a>
-          <a class="btn btn-gold" href="register.html" style="margin-left:10px">Criar Conta</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="ft">
-        <div>
-          <div style="display:flex;align-items:center;gap:10px">
-            <div class="logo-mark" style="width:36px;height:36px;border-radius:10px;font-size:15px">A</div>
-            <div style="font-family:'Playfair Display',serif">Investimentos <span style="color:var(--gold)">AlexSanches</span></div>
-          </div>
-          <div class="small muted" style="margin-top:8px">© <span id="year"></span> Todos os direitos reservados</div>
-        </div>
-        <nav style="display:flex;gap:12px;align-items:center">
-          <a href="privacy.html">Privacidade</a>
-          <a href="terms.html">Termos</a>
-          <a href="contact.html">Contato</a>
         </nav>
-      </div>
+    </header>
+
+    <section class="hero">
+        <h1>Investments Built With Excellence</h1>
+        <p>Real Estate • Cryptocurrency • Wealth Management</p>
+    </section>
+
+    <!-- Image Slider -->
+    <div class="slider">
+        <img src="assets/real-estate.jpg">
+        <img src="assets/trading-chart.jpg">
+        <img src="assets/gold-coins.jpg">
+        <img src="assets/crypto-building.jpg">
     </div>
-  </footer>
 
-  <!-- Scripts -->
-  <script>
-    // Small utilities
-    const el = (sel) => document.querySelector(sel);
-    const els = (sel) => Array.from(document.querySelectorAll(sel));
+    <!-- Email Popup -->
+    <div id="emailPopup">
+        <span id="closePopup">✖</span>
+        <h3>Need Help?</h3>
+        <p>Our team will reply to your email.</p>
+        <input type="email" id="emailHelp" placeholder="Enter your email...">
+        <button onclick="sendSupportEmail()">Send</button>
+    </div>
 
-    // Shrinking header
-    (function(){
-      const header = document.getElementById('site-header');
-      window.addEventListener('scroll', ()=>{
-        if (window.scrollY > 36) header.classList.add('shrink');
-        else header.classList.remove('shrink');
-      });
-    })();
 
-    // Mobile hamburger toggle
-    (function(){
-      const hb = document.getElementById('hamburger');
-      const panel = document.getElementById('mobile-panel');
-      hb.addEventListener('click', ()=>{
-        const open = hb.classList.toggle('open');
-        panel.classList.toggle('open', open);
-        hb.setAttribute('aria-expanded', open? 'true' : 'false');
-        panel.setAttribute('aria-hidden', !open);
-      });
-      // close when clicking a link
-      panel.querySelectorAll('a').forEach(a=>{
-        a.addEventListener('click', ()=>{ hb.classList.remove('open'); panel.classList.remove('open'); panel.setAttribute('aria-hidden','true') });
-      });
-    })();
+    <!-- JavaScript -->
+    <script>
+        // Shrink Header on Scroll
+        window.addEventListener("scroll", function () {
+            let header = document.getElementById("header");
+            if (window.scrollY > 70) header.classList.add("shrink");
+            else header.classList.remove("shrink");
+        });
 
-    // Hero parallax: pointer + device orientation for mobile
-    (function(){
-      const glow = document.getElementById('hero-glow');
-      const content = document.getElementById('hero-content');
-      let lx = 0, ly = 0;
-      function apply(x,y){
-        glow.style.transform = `translate3d(${x}px, ${y}px, 0) scale(1.02)`;
-        content.style.transform = `translate3d(${x*0.06}px, ${y*0.04}px, 0)`;
-      }
-      // pointer
-      window.addEventListener('pointermove', (ev)=>{
-        const x = (ev.clientX / window.innerWidth - 0.5) * 30;
-        const y = (ev.clientY / window.innerHeight - 0.5) * 20;
-        lx = x; ly = y;
-        apply(x,y);
-      });
-      // device orientation fallback
-      window.addEventListener('deviceorientation', (ev)=>{
-        const x = (ev.gamma || 0) * 1.5;
-        const y = (ev.beta || 0) * 0.8;
-        apply(x,y);
-      });
-      // subtle idle animation loop
-      let t = 0;
-      setInterval(()=>{ t+=0.02; apply(Math.sin(t)*6, Math.cos(t)*4); }, 3000);
-    })();
+        // Email Popup Show (after 10 seconds)
+        setTimeout(() => {
+            document.getElementById("emailPopup").style.display = "block";
+        }, 10000);
 
-    // Showcase simple slider
-    (function(){
-      const slides = els('.showcase-slide');
-      let idx = 0;
-      const show = (i)=>{
-        slides.forEach((s, n)=> s.classList.t
+        // Close Popup
+        document.getElementById("closePopup").onclick = function () {
+            document.getElementById("emailPopup").style.display = "none";
+        };
+
+        // Email Sender using mailto:
+        function sendSupportEmail() {
+            let email = document.getElementById("emailHelp").value;
+            if (email.trim() === "") {
+                alert("Enter your email first.");
+                return;
+            }
+
+            window.location.href = `mailto:${email}?subject=Support Request&body=Hello, I need help with your website.`;
+        }
+    </script>
+
+</body>
+
+</html>
