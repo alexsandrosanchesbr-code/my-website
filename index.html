@@ -3,441 +3,228 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Investimentos AlexSanches — Private Wealth & Strategic Investing</title>
-  <meta name="description" content="Investimentos AlexSanches — Private wealth, real estate & crypto advisory." />
-  <meta name="theme-color" content="#001F3F">
+  <meta name="description" content="Sanches Investimentos — Wealth management, investment advisory, financial consultancy, market analysis, and secure platform recommendations." />
+  <title>Sanches Investimentos — Invest with Confidence. Grow with Intelligence.</title>
 
   <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-  <style>
-    :root{
-      --navy:#001F3F;
-      --navy-2:#02263d;
-      --gold:#D4AF37;
-      --white:#ffffff;
-      --muted:rgba(255,255,255,0.88);
-      --ease:cubic-bezier(.2,.9,.3,1);
-      --maxw:1200px;
-    }
+  <!-- Preload LCP -->
+  <link rel="preload" as="image" href="assets/images/real-estate.jpg" type="image/jpeg">
 
-    /* Light mode tweaks */
-    @media (prefers-color-scheme: light) {
-      :root{
-        --navy: #f7f8fb;           /* light background */
-        --navy-2: #edf1f6;
-        --white: #001F3F;          /* use navy for main text in light mode */
-        --muted: rgba(0,31,63,0.85);
-      }
-      body { color: var(--white); } /* text becomes navy in light mode due to var swap */
-    }
-
-    html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--navy),var(--navy-2));color:var(--white);font-family:'Poppins',system-ui,Segoe UI,Roboto,Arial;-webkit-font-smoothing:antialiased}
-    .container{max-width:var(--maxw);margin:0 auto;padding:0 20px}
-
-    /* Header */
-    header.site-header{position:sticky;top:0;z-index:10010;background:linear-gradient(180deg, rgba(0,0,0,0.16), transparent);backdrop-filter: blur(8px);transition:padding .22s var(--ease),box-shadow .22s var(--ease)}
-    .header-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
-    .site-header.shrink .header-inner{padding:8px 0;box-shadow:0 12px 30px rgba(0,0,0,0.5)}
-    .brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--white)}
-    .brand-logo{height:76px;width:auto;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,0.5)}
-    .brand-title{font-family:'Playfair Display',serif;font-weight:700;font-size:20px}
-    .brand-title span{color:var(--gold);margin-left:6px}
-
-    nav.primary{display:flex;align-items:center;gap:20px}
-    nav.primary a{color:var(--white);text-decoration:none;padding:8px 12px;border-radius:8px;transition:all .18s}
-    nav.primary a:hover{color:var(--gold);transform:translateY(-1px)}
-    .cta{background:linear-gradient(180deg,var(--gold), #b38f3a);color:var(--navy);padding:10px 14px;border-radius:10px;font-weight:600}
-
-    /* hamburger */
-    .hamburger{display:none;background:none;border:0;width:56px;height:44px;position:relative;cursor:pointer;z-index:10011}
-    .hamburger span{display:block;height:3px;background:var(--white);margin:7px 0;border-radius:4px;transition:transform .28s,opacity .28s}
-    .hamburger.open span:nth-child(1){transform:translateY(10px) rotate(45deg)}
-    .hamburger.open span:nth-child(2){opacity:0}
-    .hamburger.open span:nth-child(3){transform:translateY(-10px) rotate(-45deg)}
-
-    /* mobile panel */
-    .mobile-panel{position:fixed;top:0;right:-100%;width:300px;height:100vh;background:linear-gradient(180deg, rgba(0,0,0,0.98), rgba(0,0,0,0.94));z-index:10009;transition:right .32s var(--ease);padding:84px 18px}
-    .mobile-panel.open{right:0}
-    .mobile-panel nav ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:18px}
-    .mobile-panel a{color:var(--muted);text-decoration:none;font-size:18px}
-
-    /* Hero */
-    .hero{position:relative;min-height:64vh;display:flex;align-items:center;justify-content:center;padding:92px 0 48px;overflow:hidden}
-    .hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(.46) contrast(.98);transform:scale(1.03);transition:transform 1s}
-    .hero-overlay{position:absolute;inset:0;background:linear-gradient(90deg, rgba(0,0,0,0.55), rgba(0,0,0,0.18))}
-    .hero-inner{position:relative;z-index:2;max-width:1100px;margin:0 auto;padding:36px;display:flex;gap:30px;align-items:center;justify-content:space-between}
-    .hero-left{flex:1;min-width:260px}
-    .eyebrow{font-size:12px;color:var(--gold);letter-spacing:1px;font-weight:700;text-transform:uppercase;margin-bottom:12px}
-    .headline{font-family:'Playfair Display',serif;font-size:38px;margin:0 0 12px;line-height:1.02}
-    .headline .gold{color:var(--gold)}
-    .lead{color:var(--muted);max-width:620px;margin-bottom:18px}
-    .hero-visual{width:380px;height:250px;border-radius:14px;overflow:hidden;background-size:cover;background-position:center;border:1px solid rgba(255,255,255,0.04);box-shadow:0 22px 44px rgba(0,0,0,0.55)}
-
-    /* services & showcase */
-    section{padding:48px 0}
-    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:22px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);box-shadow:0 14px 30px rgba(0,0,0,0.45);transition:transform .28s var(--ease)}
-    .card h3{font-family:'Playfair Display',serif;margin:0 0 8px}
-    .card p{margin:0;color:var(--muted);font-size:14px}
-    .card:hover{transform:translateY(-8px)}
-
-    .showcase{position:relative;border-radius:12px;overflow:hidden;margin-top:12px;height:320px}
-    .showcase-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transform:scale(1.04);transition:opacity .7s var(--ease), transform .7s var(--ease)}
-    .showcase-slide.active{opacity:1;transform:scale(1)}
-    .showcase-caption{position:absolute;left:20px;bottom:18px;background:linear-gradient(90deg, rgba(0,0,0,0.5), rgba(0,0,0,0.28));padding:10px 14px;border-radius:10px}
-
-    .sponsors-wrap{padding:20px 0}
-    .sponsors{display:flex;gap:18px;align-items:center;justify-content:center;flex-wrap:nowrap;overflow:hidden}
-    .sponsor{height:42px;opacity:.95;filter:grayscale(1) contrast(.9);transition:filter .18s}
-    .sponsor:hover{filter:none;opacity:1}
-
-    .wa-float{position:fixed;right:18px;bottom:18px;z-index:10020;border-radius:50%;width:64px;height:64px;display:grid;place-items:center;background:linear-gradient(180deg,#25D366,#128C7E);box-shadow:0 12px 30px rgba(0,0,0,0.45)}
-    .wa-float img{width:36px;height:36px;display:block}
-
-    .email-popup{position:fixed;left:16px;right:16px;bottom:18px;background:#fff;color:#001F3F;padding:18px;border-radius:12px;z-index:10005;box-shadow:0 18px 40px rgba(0,0,0,0.35);display:none}
-    .email-popup h4{margin:0 0 6px;font-family:'Playfair Display',serif;color:#001F3F}
-    .email-popup .row{display:flex;gap:8px}
-    .email-popup input{flex:1;padding:10px;border-radius:8px;border:1px solid #e6e6e6}
-    .email-popup button{background:#001F3F;color:var(--gold);padding:10px 12px;border-radius:8px;border:0;font-weight:600}
-
-    .muted{color:var(--muted)}
-    @media (max-width:980px){
-      .header-inner{padding:12px 0}
-      .brand-logo{height:56px}
-      nav.primary{display:none}
-      .hamburger{display:block}
-      .hero-inner{flex-direction:column;gap:16px;padding:20px}
-      .hero-visual{width:100%;height:200px}
-      .services-grid{grid-template-columns:1fr}
-      .showcase{height:220px}
-      .hero{padding-top:84px}
-      .email-popup{left:12px;right:12px}
-    }
-  </style>
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <meta name="theme-color" content="#021a33" />
 </head>
-
 <body>
-  <!-- HEADER -->
+
+  <!-- Header -->
   <header class="site-header" id="site-header">
     <div class="container header-inner">
-      <a class="brand" href="index.html" aria-label="Investimentos AlexSanches Home">
-        <img id="brandLogo" class="brand-logo" src="assets/logo.png" alt="Investimentos AlexSanches logo"
-             onerror="this.onerror=null;this.src='assets/logo.png'">
-        <div class="brand-title">Investimentos <span>AlexSanches</span></div>
+      <a class="brand" href="index.html">
+        <img src="assets/images/logo.png" alt="Sanches Investimentos" class="brand-logo" width="180" height="64">
       </a>
 
-      <nav class="primary" role="navigation" aria-label="Primary navigation">
+      <nav class="primary-nav" id="primary-nav">
         <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="portfolio.html">Portfolio</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
-        <a href="dashboard.html">Dashboard</a>
-        <a class="cta" href="login.html">Sign In</a>
+        <a class="btn-cta" href="contact.html">Get Started</a>
       </nav>
 
-      <button id="hamburger" class="hamburger" aria-label="Open menu" aria-expanded="false" title="Open menu">
+      <button id="hamburger" class="hamburger">
         <span></span><span></span><span></span>
       </button>
     </div>
   </header>
 
-  <!-- Mobile panel -->
-  <aside id="mobilePanel" class="mobile-panel" aria-hidden="true">
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="dashboard.html">Dashboard</a></li>
-        <li><a href="login.html" class="cta">Sign In</a></li>
-      </ul>
+  <!-- Mobile Navigation -->
+  <aside id="mobile-panel" class="mobile-panel">
+    <div class="mobile-top">
+      <img src="assets/images/logo.png" alt="logo" class="mobile-logo" width="140" height="48">
+      <button id="mobile-close" class="mobile-close">&times;</button>
+    </div>
+    <nav class="mobile-nav">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
     </nav>
   </aside>
 
-  <!-- HERO -->
+  <!-- MAIN CONTENT -->
   <main>
-    <section class="hero" aria-label="Hero section">
-      <div id="heroBg" class="hero-bg" data-src1="assets/real-estate.jpg" data-src2="assets/real-estate.jpg"></div>
-      <div class="hero-overlay" aria-hidden="true"></div>
 
+    <!-- ★★★★★ UPDATED HERO SECTION ★★★★★ -->
+    <section class="hero" aria-label="Hero">
       <div class="hero-inner container">
         <div class="hero-left">
-          <div class="eyebrow">Private Wealth • Real Estate • Crypto</div>
-          <h1 class="headline">Investing with <span class="gold">Discretion</span> and Performance</h1>
-          <p class="lead muted">Bespoke investment strategies and private advisory for discerning clients. We combine
-            real estate, active trading and structured crypto exposure for long-term stability and growth.</p>
-          <div style="display:flex;gap:12px;flex-wrap:wrap">
-            <a class="cta" href="contact.html">Request Consultation</a>
-            <a style="border:1px solid rgba(255,255,255,0.06);padding:10px 12px;border-radius:8px;text-decoration:none;color:var(--white)" href="about.html">Our Approach</a>
+
+          <div class="eyebrow">Sanches Investimentos</div>
+
+          <h1 class="headline">
+            Invest with Confidence.<br>
+            <span class="gold">Grow with Intelligence.</span><br>
+            Secure Your Financial Future.
+          </h1>
+
+          <p class="lead">
+            We provide professional wealth management, safe investment platform recommendations, strategic market insights and personalized financial consultancy to guide your long-term success.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="contact.html">Request Consultation</a>
+            <a class="btn btn-outline" href="about.html">Learn More</a>
           </div>
+
+          <ul class="hero-features">
+            <li>Private Wealth Advisory</li>
+            <li>Risk-Aware Growth Strategies</li>
+            <li>Global Market Intelligence</li>
+          </ul>
         </div>
 
-        <div class="hero-right" aria-hidden="true">
-          <div id="heroThumb" class="hero-visual" data-src1="assets/crypto-building.jpg" data-src2="assets/crypto-building.jpg"></div>
+        <div class="hero-right">
+
+          <picture class="hero-lcp">
+            <source srcset="assets/images/real-estate.jpg" type="image/jpeg">
+            <img src="assets/images/real-estate.jpg" alt="Real estate investment" width="900" height="600" loading="eager">
+          </picture>
+
+          <div id="hero-slider" class="hero-slider">
+            <div id="hero-slide" class="hero-slide"></div>
+            <div class="slider-controls">
+              <button id="prev-slide" class="control">‹</button>
+              <button id="next-slide" class="control">›</button>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
 
-    <!-- Sponsors -->
-    <section class="container sponsors-wrap" aria-label="Supported by">
-      <div style="text-align:center;margin-bottom:8px;color:var(--muted);font-size:13px">Trusted by leading platforms</div>
-      <div class="sponsors" id="sponsorsList">
-        <!-- using exact filenames from your repo -->
-        <img class="sponsor" alt="Binance" src="assets/binance.png">
-        <img class="sponsor" alt="Bybit" src="assets/Bybit.png" onerror="this.onerror=null;this.src='assets/Bybit.png'">
-        <img class="sponsor" alt="Coinbase" src="assets/coinbase.png">
-        <img class="sponsor" alt="MEXC" src="assets/mexc.png">
-      </div>
-    </section>
-
-    <!-- Services -->
-    <section class="container" id="services">
-      <div style="display:flex;justify-content:space-between;align-items:end;gap:12px;flex-wrap:wrap">
-        <div>
-          <h2 style="font-family:'Playfair Display',serif;margin:0 0 6px">Our Services</h2>
-          <div class="muted small">Tailored wealth management, real estate selection & crypto advisory</div>
-        </div>
-        <div style="display:flex;gap:12px;align-items:center">
-          <a class="muted" href="login.html">Client Area</a>
-          <a class="muted" href="register.html">Create Account</a>
-        </div>
-      </div>
-
-      <div class="services-grid" style="margin-top:18px">
-        <article class="card">
-          <h3>Private Portfolio Management</h3>
-          <p>Personalized multi-asset strategies and active risk monitoring for capital preservation.</p>
+    <!-- SERVICES -->
+    <section class="container services">
+      <h2 class="section-title">Our Services</h2>
+      <div class="services-grid">
+        <article class="card enter-fade-up delay-120">
+          <h3>Wealth Management</h3>
+          <p>Strategic portfolio design for growth and stability.</p>
         </article>
-        <article class="card">
-          <h3>Real Estate & Asset Sourcing</h3>
-          <p>Access to premium properties and structured investment deals tailored to goals.</p>
+        <article class="card enter-fade-up delay-240">
+          <h3>Investment Advisory</h3>
+          <p>Safe platform recommendations backed by research.</p>
         </article>
-        <article class="card">
-          <h3>Crypto Strategy</h3>
-          <p>Selective digital asset exposure, custody advisory and structured products.</p>
+        <article class="card enter-fade-up delay-360">
+          <h3>Market Analysis</h3>
+          <p>Actionable intelligence for smarter decisions.</p>
         </article>
       </div>
     </section>
 
-    <!-- Showcase slider -->
-    <section class="container" aria-label="Highlights">
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
-        <div>
-          <h2 style="font-family:'Playfair Display',serif;margin:0 0 6px">Highlights</h2>
-          <div class="muted small">Portfolio snapshots & featured cases</div>
-        </div>
-        <div style="display:flex;gap:8px">
-          <button id="prevShowcase" aria-label="Previous" style="background:transparent;border:0;color:var(--muted);font-size:20px">‹</button>
-          <button id="nextShowcase" aria-label="Next" style="background:transparent;border:0;color:var(--muted);font-size:20px">›</button>
+    <!-- VISUAL GRID -->
+    <section class="container visual-grid">
+      <div class="grid-item">
+        <img src="assets/images/image5.jpg" alt="Real estate highlight" loading="lazy">
+        <div class="grid-caption">
+          <h4>Strategic Real Estate</h4>
+          <p>Opportunities vetted with rigorous due diligence.</p>
         </div>
       </div>
-
-      <div class="showcase" id="showcase">
-        <div class="showcase-slide" data-src1="assets/trading-chart.jpg" data-src2="assets/trading-chart.jpg"></div>
-        <div class="showcase-slide" data-src1="assets/gold-coins.jpg" data-src2="assets/gold-coins.jpg"></div>
-        <div class="showcase-slide" data-src1="assets/real-estate.jpg" data-src2="assets/real-estate.jpg"></div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="container cta-panel">
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
-        <div>
-          <h3 style="font-family:'Playfair Display',serif;margin:0">Ready to elevate your portfolio?</h3>
-          <div class="muted small">Schedule a private consultation — discreet, structured and results-driven.</div>
+      <div class="grid-item">
+        <img src="assets/images/image6.jpg" alt="Trading highlight" loading="lazy">
+        <div class="grid-caption">
+          <h4>Trading & Execution</h4>
+          <p>Precision and discipline for reliable outcomes.</p>
         </div>
-        <div>
-          <a class="muted" href="contact.html" style="text-decoration:none;padding:10px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.04)">Contact Us</a>
-          <a class="cta" href="register.html" style="margin-left:10px">Create Account</a>
+      </div>
+      <div class="grid-item">
+        <img src="assets/images/image7.jpg" alt="Gold highlight" loading="lazy">
+        <div class="grid-caption">
+          <h4>Wealth Preservation</h4>
+          <p>Gold and long-term defensive strategies.</p>
+        </div>
+      </div>
+      <div class="grid-item">
+        <img src="assets/images/image8.jpg" alt="Digital assets research" loading="lazy">
+        <div class="grid-caption">
+          <h4>Digital Asset Research</h4>
+          <p>Strategic exposure with risk-aware entry.</p>
         </div>
       </div>
     </section>
-  </main>
 
-  <!-- Email overlay & popup -->
-  <div id="emailOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:10003"></div>
-  <div id="emailPopup" class="email-popup" role="dialog" aria-modal="true" aria-labelledby="emailTitle" aria-hidden="true">
-    <h4 id="emailTitle">Need Help?</h4>
-    <p class="muted" style="margin:0 0 12px">Leave your email and our team will reply.</p>
-    <div class="row">
-      <input id="emailHelp" type="email" placeholder="your@email.com" />
-      <button id="sendEmailBtn" aria-label="Send email">Send</button>
-    </div>
-    <div style="margin-top:10px;text-align:right"><button id="closeEmailSmall" style="background:transparent;border:0;color:#999">Close</button></div>
-  </div>
+    <!-- SHOWCASE -->
+    <section class="container showcase-section">
+      <div class="showcase">
+        <div id="showcase-slide-1" class="showcase-slide"></div>
+        <div id="showcase-slide-2" class="showcase-slide"></div>
+      </div>
+    </section>
 
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="ft">
-        <div style="display:flex;align-items:center;gap:12px">
-          <img src="assets/logo.png" alt="logo small" style="height:40px;border-radius:8px" onerror="this.onerror=null;this.src='assets/logo.png'">
-          <div style="font-family:'Playfair Display',serif">Investimentos <span style="color:var(--gold)">AlexSanches</span></div>
-        </div>
+    <!-- SPONSORS -->
+    <section class="container sponsors-section">
+      <h4 class="muted small">Trusted by leading platforms</h4>
+      <div class="sponsors">
+        <img src="assets/sponsors/binance.png" alt="Binance">
+        <img src="assets/sponsors/bybit.png" alt="Bybit">
+        <img src="assets/sponsors/coinbase.png" alt="Coinbase">
+        <img src="assets/sponsors/mexc.png" alt="MEXC">
+      </div>
+    </section>
 
-        <nav style="display:flex;gap:12px;align-items:center">
+    <!-- FOOTER -->
+    <footer class="site-footer container">
+      <div class="footer-inner">
+        <div>© <span id="year"></span> Sanches Investimentos. All rights reserved.</div>
+        <nav class="footer-nav">
           <a href="privacy.html">Privacy</a>
           <a href="terms.html">Terms</a>
-          <a href="contact.html">Contact</a>
         </nav>
       </div>
-      <div style="margin-top:10px;text-align:center;color:var(--muted);font-size:13px">© <span id="yearEl"></span> Investimentos AlexSanches — All rights reserved</div>
-    </div>
-  </footer>
+    </footer>
 
-  <!-- WhatsApp floating using PNG -->
-  <a id="waBtn" class="wa-float" href="https://wa.me/5521960105724" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
-    <img id="waImg" src="assets/whatsapp.png" alt="WhatsApp" onerror="this.onerror=null;this.src='assets/whatsapp.png'">
+  </main>
+
+  <!-- WhatsApp -->
+  <a id="whatsapp-float" class="wa-float" href="https://wa.me/5521960105724" target="_blank">
+    <img src="assets/images/whatsapp.png" alt="WhatsApp">
   </a>
 
-  <!-- SCRIPT: behavior, image safe loader, tawk loader (deferred) -->
-  <script>
-    const $ = (s)=>document.querySelector(s);
-    const $$ = (s)=>Array.from(document.querySelectorAll(s));
+  <!-- Email Popup -->
+  <div id="email-popup" class="email-popup">
+    <div class="email-popup-inner">
+      <h4>Need assistance?</h4>
+      <p class="muted">Leave your email and we'll reply personally.</p>
+      <form id="email-form" class="email-form">
+        <div class="row">
+          <input id="email-input" type="email" placeholder="you@company.com">
+          <button type="submit" class="btn">Send</button>
+        </div>
+      </form>
+    </div>
+  </div>
 
-    // set year
-    document.getElementById('yearEl').textContent = new Date().getFullYear();
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  <script src="assets/js/main.js" defer></script>
 
-    // header shrink
-    (function(){
-      const header = document.getElementById('site-header');
-      window.addEventListener('scroll', ()=> header.classList.toggle('shrink', window.scrollY > 36), {passive:true});
-    })();
-
-    // HAMBURGER
-    (function(){
-      const hb = document.getElementById('hamburger');
-      const panel = document.getElementById('mobilePanel');
-      if(!hb || !panel) return;
-      hb.style.touchAction = 'manipulation';
-      hb.tabIndex = 0;
-      const toggle = ()=>{
-        const open = hb.classList.toggle('open');
-        panel.classList.toggle('open', open);
-        hb.setAttribute('aria-expanded', open?'true':'false');
-        panel.setAttribute('aria-hidden', !open);
-      };
-      hb.addEventListener('click', toggle);
-      hb.addEventListener('keydown', (e)=> { if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
-
-      // close when clicking outside
-      document.addEventListener('click', (ev)=>{
-        if(!panel.classList.contains('open')) return;
-        const target = ev.target;
-        if(panel.contains(target) || hb.contains(target)) return;
-        hb.classList.remove('open'); panel.classList.remove('open'); panel.setAttribute('aria-hidden','true');
-      });
-      // close links
-      panel.querySelectorAll('a').forEach(a => a.addEventListener('click', ()=>{
-        hb.classList.remove('open'); panel.classList.remove('open'); panel.setAttribute('aria-hidden','true');
-      }));
-    })();
-
-    // tiny image loader that uses the exact assets/ filenames you uploaded
-    function imageExists(url, cb){
-      const i = new Image();
-      i.onload = ()=> cb(true, url);
-      i.onerror = ()=> cb(false, url);
-      i.src = url;
-    }
-
-    // HERO and showcase init
-    (function(){
-      const heroBg = document.getElementById('heroBg');
-      const heroThumb = document.getElementById('heroThumb');
-
-      const heroPaths = ['assets/real-estate.jpg'];
-      const thumbPaths = ['assets/crypto-building.jpg'];
-
-      if(heroBg){
-        // try first path; if fails, leave a neutral background
-        imageExists(heroPaths[0], (ok, url)=> {
-          if(ok) heroBg.style.backgroundImage = `url('${url}')`;
-          else heroBg.style.backgroundColor = '#021726';
-        });
-      }
-      if(heroThumb){
-        imageExists(thumbPaths[0], (ok, url)=> {
-          if(ok) heroThumb.style.backgroundImage = `url('${url}')`;
-          else heroThumb.style.backgroundColor = '#021726';
-        });
-      }
-    })();
-
-    // Sponsors: just rely on images provided in assets/
-    (function(){
-      $$('.sponsor').forEach(img=>{
-        // if image fails, show low opacity placeholder (keeps layout)
-        imageExists(img.src, (ok)=>{
-          if(!ok){ img.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="40"></svg>'; img.style.opacity='0.18'; console.warn('Sponsor failed to load:', img.alt); }
-        });
-      });
-    })();
-
-    // Showcase slides
-    (function(){
-      const slides = document.querySelectorAll('.showcase-slide');
-      slides.forEach((sl, i)=>{
-        const url = sl.dataset.src1 || sl.dataset.src2 || '';
-        if(url){
-          imageExists(url, (ok, u)=> { if(ok) sl.style.backgroundImage = `url('${u}')`; else console.warn('Showcase image failed', u); });
-        }
-      });
-      let idx = 0;
-      const show = (i)=> slides.forEach((s,n)=> s.classList.toggle('active', n===i));
-      $('#prevShowcase')?.addEventListener('click', ()=>{ idx = (idx-1+slides.length)%slides.length; show(idx); });
-      $('#nextShowcase')?.addEventListener('click', ()=>{ idx = (idx+1)%slides.length; show(idx); });
-      setInterval(()=>{ idx = (idx+1)%slides.length; show(idx); }, 6000);
-      show(0);
-    })();
-
-    // Email popup: show/hide
-    (function(){
-      const overlay = document.getElementById('emailOverlay');
-      const popup = document.getElementById('emailPopup');
-      const sendBtn = document.getElementById('sendEmailBtn');
-      const closeSmall = document.getElementById('closeEmailSmall');
-
-      function show(){ overlay.style.display='block'; popup.style.display='block'; popup.setAttribute('aria-hidden','false'); }
-      function hide(){ overlay.style.display='none'; popup.style.display='none'; popup.setAttribute('aria-hidden','true'); }
-
-      setTimeout(show, 8000);
-      overlay.addEventListener('click', hide);
-      closeSmall.addEventListener('click', hide);
-      document.addEventListener('keydown', (e)=> { if(e.key === 'Escape') hide(); });
-
-      sendBtn.addEventListener('click', ()=>{
-        const email = (document.getElementById('emailHelp')||{}).value || '';
-        if(!email || !email.includes('@')){ alert('Please enter a valid email.'); return; }
-        window.location.href = `mailto:${encodeURIComponent(email)}?subject=${encodeURIComponent('Support request')}`;
-        hide();
-      });
-    })();
-
-    // Defer Tawk.to to avoid blocking paint; try to set high z-index for iframe after load
-    (function(){
-      window.addEventListener('load', ()=>{
-        setTimeout(()=>{
-          try{
-            var s1=document.createElement("script"), s0=document.getElementsByTagName("script")[0];
-            s1.async=true;
-            s1.src='https://embed.tawk.to/6927ec1d177985195e6b3689/1jb1v4kul';
-            s1.charset='UTF-8';
-            s1.setAttribute('crossorigin','*');
-            s0.parentNode.insertBefore(s1,s0);
-            s1.onload = ()=> {
-              // try to bump iframe z-index for visibility (best-effort)
-              setTimeout(()=> {
-                const ifr = document.querySelector('iframe[id^="tawk"]');
-                if(ifr) ifr.style.zIndex = 20000;
-              }, 1000);
-            };
-          }catch(e){ console.warn('tawk injection failed', e); }
-        }, 900);
-      }, {once:true});
-    })();
-
-    console.info('Index ready — images will load from assets/ (per your repo list).');
+  <!-- Tawk.to -->
+  <script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/6927ec1d177985195e6b3689/1jb1v4kul';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
   </script>
+
 </body>
-            </html>
+</html>
