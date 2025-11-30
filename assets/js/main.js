@@ -1,17 +1,17 @@
 /* assets/js/main.js
-   FINAL - Robust hero slider and UI initialization
-   - Preloads 4 hero images and paints #hero-slide background
-   - Prev/Next controls + auto-rotate + reset timer
-   - Mobile panel open/close
-   - Email popup timed show and global click-to-close
-   - Normalize sponsor images sizes and lazy loading behaviors
-   - Safe, small and fast
+   Final robust hero slider and UI behaviors for Sanches Investimentos
+   - Preloads hero images (4) and paints #hero-slide background
+   - Prev/Next controls + auto-rotate
+   - Mobile panel toggle (hamburger)
+   - Email popup (4s) and click-outside to close
+   - Normalize sponsor sizes
+   - Lightweight, defensive, optimized
 */
 
 (() => {
   'use strict';
 
-  // ========== CONFIG ==========
+  // --- CONFIG: must match filenames in /assets/images/
   const HERO_IMAGES = [
     'assets/images/real-estate.jpg',
     'assets/images/trading-chart.jpg',
@@ -20,7 +20,7 @@
   ];
   const AUTO_DELAY = 4500;
 
-  // ========== ELEMENT REFERENCES ==========
+  // --- DOM refs
   const heroSlide = document.getElementById('hero-slide');
   const prevBtn = document.getElementById('prev-slide');
   const nextBtn = document.getElementById('next-slide');
@@ -30,8 +30,9 @@
   const emailPopup = document.getElementById('email-popup');
   const emailForm = document.getElementById('email-form');
   const emailInput = document.getElementById('email-input');
+  const sponsorsContainer = document.getElementById('sponsors');
 
-  // ========== HELPERS ==========
+  // --- helpers
   function preload(src){
     return new Promise(resolve => {
       const img = new Image();
@@ -41,29 +42,28 @@
     });
   }
 
-  // ========== HERO SLIDER ==========
+  // --- HERO slider
   let slides = [], idx = 0, autoTimer = null;
-
   async function initHero(){
     if(!heroSlide) {
-      console.warn('hero-slide not found; hero will not animate.');
+      console.warn('hero-slide element missing.');
       return;
     }
 
-    // preload images
+    // preload in parallel
     const results = await Promise.all(HERO_IMAGES.map(preload));
     slides = results.filter(r => r.ok).map(r => r.src);
 
     if(slides.length === 0){
-      console.warn('No hero images loaded - check filenames in assets/images.');
+      console.warn('No hero images found. Check assets/images filenames.');
       return;
     }
 
-    // apply first slide
+    // show first slide
     idx = 0;
     applySlide(slides[idx]);
 
-    // auto rotate
+    // start auto rotation
     autoTimer = setInterval(() => {
       idx = (idx + 1) % slides.length;
       applySlide(slides[idx]);
@@ -84,7 +84,6 @@
 
   function applySlide(src){
     if(!heroSlide) return;
-    // make a smooth fade swap
     heroSlide.style.transition = 'opacity .45s ease, transform .45s ease';
     heroSlide.style.opacity = 0;
     setTimeout(() => {
@@ -92,17 +91,17 @@
       heroSlide.style.backgroundSize = 'cover';
       heroSlide.style.backgroundPosition = 'center';
       heroSlide.style.opacity = 1;
-    }, 200);
+    }, 180);
   }
 
-  // ========== MOBILE PANEL ==========
-  function openMobile(){ mobilePanel && mobilePanel.classList.add('open'); hamburger && hamburger.setAttribute('aria-expanded','true'); }
-  function closeMobile(){ mobilePanel && mobilePanel.classList.remove('open'); hamburger && hamburger.setAttribute('aria-expanded','false'); }
+  // --- Mobile panel
+  function openMobile(){ if(mobilePanel) { mobilePanel.classList.add('open'); mobilePanel.setAttribute('aria-hidden','false'); hamburger.setAttribute('aria-expanded','true'); } }
+  function closeMobile(){ if(mobilePanel) { mobilePanel.classList.remove('open'); mobilePanel.setAttribute('aria-hidden','true'); hamburger.setAttribute('aria-expanded','false'); } }
 
   function initMobile(){
     if(!hamburger || !mobilePanel) return;
     hamburger.addEventListener('click', (e) => { e.stopPropagation(); openMobile(); });
-    mobileClose && mobileClose.addEventListener('click', (e) => { e.stopPropagation(); closeMobile(); });
+    if(mobileClose) mobileClose.addEventListener('click', (e) => { e.stopPropagation(); closeMobile(); });
     document.addEventListener('click', (e) => {
       if(mobilePanel.classList.contains('open')){
         if(!mobilePanel.contains(e.target) && !hamburger.contains(e.target)) closeMobile();
@@ -111,7 +110,7 @@
     mobilePanel.addEventListener('click', (e) => e.stopPropagation());
   }
 
-  // ========== EMAIL POPUP ==========
+  // --- Email popup
   let popupVisible = false;
   function showPopup(){ if(popupVisible) return; popupVisible = true; if(emailPopup){ emailPopup.style.display = 'block'; emailPopup.setAttribute('aria-hidden','false'); } }
   function hidePopup(){ if(!popupVisible) return; popupVisible = false; if(emailPopup){ emailPopup.style.display = 'none'; emailPopup.setAttribute('aria-hidden','true'); } }
@@ -119,6 +118,7 @@
   function initPopup(){
     if(!emailPopup) return;
     setTimeout(showPopup, 4000);
+    // clicking anywhere closes popup
     document.addEventListener('click', () => hidePopup(), {capture:true});
     emailPopup.addEventListener('click', (e) => e.stopPropagation());
     if(emailForm && emailInput){
@@ -126,16 +126,17 @@
         e.preventDefault();
         const v = (emailInput.value || '').trim();
         if(!/^\S+@\S+\.\S+$/.test(v)){ emailInput.focus(); return; }
-        emailForm.innerHTML = '<div style="padding:12px 0;color:#021a33">Thank you — we will contact you shortly.</div>';
+        emailForm.innerHTML = '<div style="padding:12px 0;color:#021a33">Thanks — we will reply shortly.</div>';
         setTimeout(hidePopup, 1400);
       });
     }
   }
 
-  // ========== SPONSOR NORMALIZE ==========
+  // --- Sponsors normalize
   function normalizeSponsors(){
-    try{
-      const imgs = document.querySelectorAll('.sponsors img');
+    try {
+      if(!sponsorsContainer) return;
+      const imgs = sponsorsContainer.querySelectorAll('img');
       imgs.forEach(img => {
         if(!img.classList.contains('sponsor')) img.classList.add('sponsor');
         img.style.maxHeight = '48px';
@@ -145,14 +146,13 @@
     } catch(e){}
   }
 
-  // ========== INIT ==========
+  // --- Init
   function init(){
     initHero();
     initMobile();
     initPopup();
     normalizeSponsors();
-
-    // slight reveal for enter-fade-up elements
+    // reveal small animations
     requestAnimationFrame(() => {
       document.querySelectorAll('.enter-fade-up').forEach(el => el.classList.add('visible'));
     });
