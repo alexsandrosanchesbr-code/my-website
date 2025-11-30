@@ -1,26 +1,26 @@
 /* assets/js/main.js
-   Robust hero slider + UI init for Sanches Investimentos
-   - Preloads hero images (4)
-   - Applies background to #hero-slide so text overlays correctly
-   - Prev/Next controls + auto-rotate
-   - Mobile menu toggle
-   - Email popup show/close
-   - Safe Tawk loader (already in HTML, this won't block)
-   - Graceful fallbacks and console warnings
+   FINAL - Robust hero slider and UI initialization
+   - Preloads 4 hero images and paints #hero-slide background
+   - Prev/Next controls + auto-rotate + reset timer
+   - Mobile panel open/close
+   - Email popup timed show and global click-to-close
+   - Normalize sponsor images sizes and lazy loading behaviors
+   - Safe, small and fast
 */
 
 (() => {
   'use strict';
 
-  // CONFIG - exact paths (must match filenames)
+  // ========== CONFIG ==========
   const HERO_IMAGES = [
     'assets/images/real-estate.jpg',
     'assets/images/trading-chart.jpg',
     'assets/images/gold-coins.jpg',
     'assets/images/crypto-building.jpg'
   ];
+  const AUTO_DELAY = 4500;
 
-  // DOM refs (defensive)
+  // ========== ELEMENT REFERENCES ==========
   const heroSlide = document.getElementById('hero-slide');
   const prevBtn = document.getElementById('prev-slide');
   const nextBtn = document.getElementById('next-slide');
@@ -31,7 +31,7 @@
   const emailForm = document.getElementById('email-form');
   const emailInput = document.getElementById('email-input');
 
-  // Preload utility
+  // ========== HELPERS ==========
   function preload(src){
     return new Promise(resolve => {
       const img = new Image();
@@ -41,29 +41,25 @@
     });
   }
 
-  // HERO slider state
-  let slides = [];
-  let idx = 0;
-  let autoTimer = null;
-  const AUTO_DELAY = 4500;
+  // ========== HERO SLIDER ==========
+  let slides = [], idx = 0, autoTimer = null;
 
   async function initHero(){
-    if(!heroSlide){
-      console.warn('hero-slide element not found in DOM.');
+    if(!heroSlide) {
+      console.warn('hero-slide not found; hero will not animate.');
       return;
     }
 
-    // preload in parallel
+    // preload images
     const results = await Promise.all(HERO_IMAGES.map(preload));
     slides = results.filter(r => r.ok).map(r => r.src);
 
     if(slides.length === 0){
-      // fallback: use hero LCP picture if exists (keeps layout)
-      console.warn('No hero images loaded. Check filenames in assets/images.');
+      console.warn('No hero images loaded - check filenames in assets/images.');
       return;
     }
 
-    // show first slide quickly
+    // apply first slide
     idx = 0;
     applySlide(slides[idx]);
 
@@ -88,7 +84,7 @@
 
   function applySlide(src){
     if(!heroSlide) return;
-    // fade: reduce opacity, swap background, restore
+    // make a smooth fade swap
     heroSlide.style.transition = 'opacity .45s ease, transform .45s ease';
     heroSlide.style.opacity = 0;
     setTimeout(() => {
@@ -96,10 +92,10 @@
       heroSlide.style.backgroundSize = 'cover';
       heroSlide.style.backgroundPosition = 'center';
       heroSlide.style.opacity = 1;
-    }, 220);
+    }, 200);
   }
 
-  // Mobile menu logic
+  // ========== MOBILE PANEL ==========
   function openMobile(){ mobilePanel && mobilePanel.classList.add('open'); hamburger && hamburger.setAttribute('aria-expanded','true'); }
   function closeMobile(){ mobilePanel && mobilePanel.classList.remove('open'); hamburger && hamburger.setAttribute('aria-expanded','false'); }
 
@@ -107,66 +103,59 @@
     if(!hamburger || !mobilePanel) return;
     hamburger.addEventListener('click', (e) => { e.stopPropagation(); openMobile(); });
     mobileClose && mobileClose.addEventListener('click', (e) => { e.stopPropagation(); closeMobile(); });
-    // click outside closes
     document.addEventListener('click', (e) => {
       if(mobilePanel.classList.contains('open')){
         if(!mobilePanel.contains(e.target) && !hamburger.contains(e.target)) closeMobile();
       }
     });
-    // prevent panel clicks from bubbling
     mobilePanel.addEventListener('click', (e) => e.stopPropagation());
   }
 
-  // Email popup
+  // ========== EMAIL POPUP ==========
   let popupVisible = false;
-  function showPopup(){ if(popupVisible) return; popupVisible = true; if(emailPopup) { emailPopup.style.display = 'block'; emailPopup.setAttribute('aria-hidden','false'); } }
-  function hidePopup(){ if(!popupVisible) return; popupVisible = false; if(emailPopup) { emailPopup.style.display = 'none'; emailPopup.setAttribute('aria-hidden','true'); } }
+  function showPopup(){ if(popupVisible) return; popupVisible = true; if(emailPopup){ emailPopup.style.display = 'block'; emailPopup.setAttribute('aria-hidden','false'); } }
+  function hidePopup(){ if(!popupVisible) return; popupVisible = false; if(emailPopup){ emailPopup.style.display = 'none'; emailPopup.setAttribute('aria-hidden','true'); } }
 
   function initPopup(){
     if(!emailPopup) return;
     setTimeout(showPopup, 4000);
-    // clicking anywhere closes it
     document.addEventListener('click', () => hidePopup(), {capture:true});
     emailPopup.addEventListener('click', (e) => e.stopPropagation());
     if(emailForm && emailInput){
       emailForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        const value = (emailInput.value || '').trim();
-        if(!/^\S+@\S+\.\S+$/.test(value)){
-          emailInput.focus();
-          return;
-        }
-        // show thank you and hide
-        emailForm.innerHTML = '<div style="padding:12px 0;color:#021a33">Thanks — we will contact you shortly.</div>';
+        const v = (emailInput.value || '').trim();
+        if(!/^\S+@\S+\.\S+$/.test(v)){ emailInput.focus(); return; }
+        emailForm.innerHTML = '<div style="padding:12px 0;color:#021a33">Thank you — we will contact you shortly.</div>';
         setTimeout(hidePopup, 1400);
       });
     }
   }
 
-  // Ensure all sponsor <img> tags have class 'sponsor' (defensive)
+  // ========== SPONSOR NORMALIZE ==========
   function normalizeSponsors(){
-    try {
+    try{
       const imgs = document.querySelectorAll('.sponsors img');
       imgs.forEach(img => {
         if(!img.classList.contains('sponsor')) img.classList.add('sponsor');
-        // make sure they aren't huge
         img.style.maxHeight = '48px';
         img.style.height = 'auto';
         img.style.objectFit = 'contain';
       });
-    } catch(e){ /* ignore */ }
+    } catch(e){}
   }
 
-  // Setup: run when DOM ready
+  // ========== INIT ==========
   function init(){
     initHero();
     initMobile();
     initPopup();
     normalizeSponsors();
 
-    // helpful console warnings if logo missing
-    const logo = document.querySelector('.brand-logo');
-    if(logo) logo.addEventListener('error', () => console.warn('Logo missing: ensure assets/images/logo.png exists (case-sensitive).'));
+    // slight reveal for enter-fade-up elements
+    requestAnimationFrame(() => {
+      document.querySelectorAll('.enter-fade-up').forEach(el => el.classList.add('visible'));
+    });
   }
 
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
