@@ -352,28 +352,47 @@ footer {
     font-size: 22px;
     cursor: pointer;
        }
-/* --- Premium Header Fix --- */
-
-.logo-img {
-    width: 58px;            /* Bigger logo */
-    height: auto;
-    margin-right: 12px;
+/* Header Container */
+.main-header {
+    width: 100%;
+    padding: 12px 20px;
+    background-color: var(--navy-1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.brand {
+/* Logo + Name Layout */
+.header-left {
     display: flex;
     align-items: center;
-    text-decoration: none;
+    gap: 10px;
 }
 
-.brand-name {
-    font-family: "Playfair Display", serif;
+/* Logo Size (Medium Professional) */
+.header-logo {
+    width: 55px;      /* ← Adjust this between 45–70px depending on what you like */
+    height: auto;
+}
+
+/* Company Name */
+.header-title {
     font-size: 1.25rem;
     font-weight: 600;
-    color: var(--gold);     /* Gold brand color */
-    letter-spacing: 0.5px;
+    font-family: "Playfair Display", serif;
+    color: var(--gold);
 }
-.site-header {
-    background: var(--navy-1);
-    padding: 12px 0;
+
+/* Mobile Menu Icon */
+.menu-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.menu-toggle span {
+    width: 28px;
+    height: 3px;
+    background: var(--gold);
+    border-radius: 3px;
 }
