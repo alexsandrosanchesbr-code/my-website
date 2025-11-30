@@ -265,3 +265,90 @@ footer {
     color: var(--text-light);
     font-size: 14px;
 }
+/* WhatsApp Floating Button */
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+.whatsapp-float img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+/* Email Popup */
+.email-popup {
+    position: fixed;
+    bottom: 120px;
+    right: 20px;
+    background: var(--navy-2);
+    padding: 20px;
+    width: 260px;
+    border-radius: var(--radius);
+    color: var(--white);
+    z-index: 9999;
+    display: none;
+}
+
+.email-popup input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: none;
+}
+
+.email-popup button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    background: var(--gold);
+    color: #000;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+}
+/* Email Popup Styling */
+.email-popup {
+    position: fixed;
+    bottom: 120px;
+    right: 20px;
+    width: 260px;
+    padding: 20px;
+    background: var(--navy-2);
+    border-radius: 15px;
+    box-shadow: 0 4px 25px rgba(0,0,0,0.4);
+    color: var(--white);
+    z-index: 99999;
+    display: none;
+}
+
+.email-popup input {
+    width: 100%;
+    padding: 11px;
+    border-radius: 10px;
+    border: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.email-popup button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    background: var(--gold);
+    color: #000;
+    font-weight: 600;
+    border: none;
+}
+
+.popup-close {
+    position: absolute;
+    top: 6px;
+    right: 10px;
+    font-size: 22px;
+    cursor: pointer;
+       }
