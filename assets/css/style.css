@@ -352,3 +352,28 @@ footer {
     font-size: 22px;
     cursor: pointer;
        }
+/* --- Premium Header Fix --- */
+
+.logo-img {
+    width: 58px;            /* Bigger logo */
+    height: auto;
+    margin-right: 12px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.brand-name {
+    font-family: "Playfair Display", serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--gold);     /* Gold brand color */
+    letter-spacing: 0.5px;
+}
+.site-header {
+    background: var(--navy-1);
+    padding: 12px 0;
+}
