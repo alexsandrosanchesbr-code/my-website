@@ -1,230 +1,225 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Sanches Investimentos — Wealth management, investment advisory, financial consultancy, market analysis, and secure platform recommendations." />
-  <title>Sanches Investimentos — Invest with Confidence. Grow with Intelligence.</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Sanches Investimentos — Invest with Confidence</title>
+    <meta name="description"
+        content="Sanches Investimentos — Brazilian-inspired global wealth & investment guidance. Market analysis, investment strategy, asset growth, and secure risk-managed investing." />
 
-  <!-- Preload LCP -->
-  <link rel="preload" as="image" href="assets/images/real-estate.jpg" type="image/jpeg">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="assets/css/style.css">
-  <meta name="theme-color" content="#021a33" />
+    <!-- Preload LCP image -->
+    <link rel="preload" as="image" href="assets/images/lcp-cover.jpg">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css" />
 </head>
+
 <body>
 
-  <!-- Header -->
-  <header class="site-header" id="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html">
-        <img src="assets/images/logo.png" alt="Sanches Investimentos" class="brand-logo" width="180" height="64">
-      </a>
+    <!-- =======================================
+         HEADER
+    ======================================== -->
+    <header class="site-header" id="site-header">
+        <div class="container header-inner">
 
-      <nav class="primary-nav" id="primary-nav">
-        <a href="index.html">Home</a>
-        <a href="services.html">Services</a>
-        <a href="portfolio.html">Portfolio</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a class="btn-cta" href="contact.html">Get Started</a>
-      </nav>
+            <a class="brand" href="index.html">
+                <img src="assets/images/logo.png" alt="Sanches Investimentos" class="brand-logo">
+            </a>
 
-      <button id="hamburger" class="hamburger">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
+            <!-- Desktop Nav -->
+            <nav class="primary-nav" id="primary-nav">
+                <a href="#home">Home</a>
+                <a href="#services">Services</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#about">About</a>
+                <a href="#contact" class="btn-cta">Get Started</a>
+            </nav>
 
-  <!-- Mobile Navigation -->
-  <aside id="mobile-panel" class="mobile-panel">
-    <div class="mobile-top">
-      <img src="assets/images/logo.png" alt="logo" class="mobile-logo" width="140" height="48">
-      <button id="mobile-close" class="mobile-close">&times;</button>
-    </div>
-    <nav class="mobile-nav">
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="portfolio.html">Portfolio</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </aside>
+            <!-- Mobile Hamburger -->
+            <button class="hamburger" id="hamburger" aria-label="Open Menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
 
-  <!-- MAIN CONTENT -->
-  <main>
-
-    <!-- ★★★★★ UPDATED HERO SECTION ★★★★★ -->
-    <section class="hero" aria-label="Hero">
-      <div class="hero-inner container">
-        <div class="hero-left">
-
-          <div class="eyebrow">Sanches Investimentos</div>
-
-          <h1 class="headline">
-            Invest with Confidence.<br>
-            <span class="gold">Grow with Intelligence.</span><br>
-            Secure Your Financial Future.
-          </h1>
-
-          <p class="lead">
-            We provide professional wealth management, safe investment platform recommendations, strategic market insights and personalized financial consultancy to guide your long-term success.
-          </p>
-
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="contact.html">Request Consultation</a>
-            <a class="btn btn-outline" href="about.html">Learn More</a>
-          </div>
-
-          <ul class="hero-features">
-            <li>Private Wealth Advisory</li>
-            <li>Risk-Aware Growth Strategies</li>
-            <li>Global Market Intelligence</li>
-          </ul>
+    <!-- Mobile Panel -->
+    <div class="mobile-panel" id="mobile-panel">
+        <div class="mobile-top">
+            <img src="assets/images/logo.png" class="mobile-logo" alt="">
+            <button class="mobile-close" id="mobile-close">×</button>
         </div>
 
-        <div class="hero-right">
-
-          <picture class="hero-lcp">
-            <source srcset="assets/images/real-estate.jpg" type="image/jpeg">
-            <img src="assets/images/real-estate.jpg" alt="Real estate investment" width="900" height="600" loading="eager">
-          </picture>
-
-          <div id="hero-slider" class="hero-slider">
-            <div id="hero-slide" class="hero-slide"></div>
-            <div class="slider-controls">
-              <button id="prev-slide" class="control">‹</button>
-              <button id="next-slide" class="control">›</button>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- SERVICES -->
-    <section class="container services">
-      <h2 class="section-title">Our Services</h2>
-      <div class="services-grid">
-        <article class="card enter-fade-up delay-120">
-          <h3>Wealth Management</h3>
-          <p>Strategic portfolio design for growth and stability.</p>
-        </article>
-        <article class="card enter-fade-up delay-240">
-          <h3>Investment Advisory</h3>
-          <p>Safe platform recommendations backed by research.</p>
-        </article>
-        <article class="card enter-fade-up delay-360">
-          <h3>Market Analysis</h3>
-          <p>Actionable intelligence for smarter decisions.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- VISUAL GRID -->
-    <section class="container visual-grid">
-      <div class="grid-item">
-        <img src="assets/images/image5.jpg" alt="Real estate highlight" loading="lazy">
-        <div class="grid-caption">
-          <h4>Strategic Real Estate</h4>
-          <p>Opportunities vetted with rigorous due diligence.</p>
-        </div>
-      </div>
-      <div class="grid-item">
-        <img src="assets/images/image6.jpg" alt="Trading highlight" loading="lazy">
-        <div class="grid-caption">
-          <h4>Trading & Execution</h4>
-          <p>Precision and discipline for reliable outcomes.</p>
-        </div>
-      </div>
-      <div class="grid-item">
-        <img src="assets/images/image7.jpg" alt="Gold highlight" loading="lazy">
-        <div class="grid-caption">
-          <h4>Wealth Preservation</h4>
-          <p>Gold and long-term defensive strategies.</p>
-        </div>
-      </div>
-      <div class="grid-item">
-        <img src="assets/images/image8.jpg" alt="Digital assets research" loading="lazy">
-        <div class="grid-caption">
-          <h4>Digital Asset Research</h4>
-          <p>Strategic exposure with risk-aware entry.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- SHOWCASE -->
-    <section class="container showcase-section">
-      <div class="showcase">
-        <div id="showcase-slide-1" class="showcase-slide"></div>
-        <div id="showcase-slide-2" class="showcase-slide"></div>
-      </div>
-    </section>
-
-    <!-- SPONSORS -->
-    <section class="container sponsors-section">
-      <h4 class="muted small">Trusted by leading platforms</h4>
-      <div class="sponsors">
-        <img src="assets/sponsors/binance.png" alt="Binance">
-        <img src="assets/sponsors/bybit.png" alt="Bybit">
-        <img src="assets/sponsors/coinbase.png" alt="Coinbase">
-        <img src="assets/sponsors/mexc.png" alt="MEXC">
-      </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="site-footer container">
-      <div class="footer-inner">
-        <div>© <span id="year"></span> Sanches Investimentos. All rights reserved.</div>
-        <nav class="footer-nav">
-          <a href="privacy.html">Privacy</a>
-          <a href="terms.html">Terms</a>
+        <nav class="mobile-nav">
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#about">About</a>
+            <a href="#contact" class="btn-cta">Get Started</a>
         </nav>
-      </div>
+    </div>
+
+
+    <!-- =======================================
+         HERO SECTION
+    ======================================== -->
+    <section class="hero" id="home">
+        <div class="container hero-inner">
+
+            <!-- LEFT -->
+            <div class="hero-left">
+                <p class="eyebrow">SANChes Investimentos</p>
+
+                <h1 class="headline enter-fade-up">
+                    Invest with <span class="gold">Confidence</span>.<br>
+                    Grow with <span class="gold">Intelligence</span>.<br>
+                    Secure Your <span class="gold">Financial Future</span>.
+                </h1>
+
+                <p class="lead enter-fade-up delay-120">
+                    Expert wealth management, market intelligence, and strategic investment guidance inspired by
+                    Brazilian excellence — designed for investors worldwide.
+                </p>
+
+                <div class="hero-actions enter-fade-up delay-240">
+                    <a href="#services" class="btn btn-primary">Explore Services</a>
+                    <a href="#contact" class="btn btn-outline">Speak With Consultant</a>
+                </div>
+
+                <ul class="hero-features enter-fade-up delay-360">
+                    <li>Wealth Growth</li>
+                    <li>Risk-Managed Investing</li>
+                    <li>Smart Market Insights</li>
+                </ul>
+            </div>
+
+            <!-- RIGHT -->
+            <div class="hero-right">
+
+                <!-- LCP Image -->
+                <div class="hero-lcp">
+                    <img src="assets/images/lcp-cover.jpg" alt="Investment Vision">
+                </div>
+
+                <!-- HERO SLIDER -->
+                <div id="hero-slider" class="hero-slider">
+                    <div id="hero-slide"></div>
+
+                    <div class="slider-controls">
+                        <button id="prev-slide" class="control" aria-label="Previous Slide">‹</button>
+                        <button id="next-slide" class="control" aria-label="Next Slide">›</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =======================================
+         SERVICES
+    ======================================== -->
+    <section class="container" id="services">
+        <h2 class="section-title">Our Services</h2>
+
+        <div class="services-grid">
+
+            <div class="card">
+                <h3>Wealth Management</h3>
+                <p>Tailored strategies to manage, grow, and secure investor assets with precision and risk control.</p>
+            </div>
+
+            <div class="card">
+                <h3>Market Analysis</h3>
+                <p>Expert market evaluation delivering clarity, signals, and insights for smarter investment decisions.</p>
+            </div>
+
+            <div class="card">
+                <h3>Investment Advisory</h3>
+                <p>Personalized investment guidance backed by global market experience and Brazilian excellence.</p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =======================================
+         SPONSORS (FIXED)
+    ======================================== -->
+    <section class="container sponsors-section" aria-label="Trusted by top platforms">
+        <h4 class="muted">TRUSTED BY LEADING PLATFORMS</h4>
+
+        <div class="sponsors">
+            <img class="sponsor" src="assets/sponsors/binance.png" alt="Binance" loading="lazy"
+                onerror="this.style.display='none'">
+            <img class="sponsor" src="assets/sponsors/bybit.png" alt="Bybit" loading="lazy"
+                onerror="this.style.display='none'">
+            <img class="sponsor" src="assets/sponsors/coinbase.png" alt="Coinbase" loading="lazy"
+                onerror="this.style.display='none'">
+            <img class="sponsor" src="assets/sponsors/mexc.png" alt="MEXC" loading="lazy"
+                onerror="this.style.display='none'">
+        </div>
+    </section>
+
+
+    <!-- =======================================
+         FOOTER
+    ======================================== -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <span>© 2024 Sanches Investimentos — All rights reserved.</span>
+            <span>Brazilian-Inspired • Globally Trusted</span>
+        </div>
     </footer>
 
-  </main>
 
-  <!-- WhatsApp -->
-  <a id="whatsapp-float" class="wa-float" href="https://wa.me/5521960105724" target="_blank">
-    <img src="assets/images/whatsapp.png" alt="WhatsApp">
-  </a>
+    <!-- =======================================
+         WHATSAPP FLOAT
+    ======================================== -->
+    <a href="https://wa.me/xxxxxxxxxxx" class="wa-float">
+        <img src="assets/images/whatsapp.png" alt="WhatsApp Chat">
+    </a>
 
-  <!-- Email Popup -->
-  <div id="email-popup" class="email-popup">
-    <div class="email-popup-inner">
-      <h4>Need assistance?</h4>
-      <p class="muted">Leave your email and we'll reply personally.</p>
-      <form id="email-form" class="email-form">
-        <div class="row">
-          <input id="email-input" type="email" placeholder="you@company.com">
-          <button type="submit" class="btn">Send</button>
-        </div>
-      </form>
+
+    <!-- =======================================
+         EMAIL POPUP
+    ======================================== -->
+    <div class="email-popup" id="email-popup" aria-hidden="true">
+        <form id="email-form">
+            <div class="row">
+                <input id="email-input" type="email" placeholder="Enter your email…" required>
+                <button type="submit">Send</button>
+            </div>
+        </form>
     </div>
-  </div>
 
-  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
-  <script src="assets/js/main.js" defer></script>
 
-  <!-- Tawk.to -->
-  <script type="text/javascript">
-  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-  (function(){
-  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-  s1.async=true;
-  s1.src='https://embed.tawk.to/6927ec1d177985195e6b3689/1jb1v4kul';
-  s1.charset='UTF-8';
-  s1.setAttribute('crossorigin','*');
-  s0.parentNode.insertBefore(s1,s0);
-  })();
-  </script>
+    <!-- =======================================
+         TAWK.TO
+    ======================================== -->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = "https://embed.tawk.to/XXXXXXXXX/1XXXXXXXX"; /* <-- REPLACE WITH YOUR TAWK CODE */
+            s1.charset = "UTF-8";
+            s1.setAttribute("crossorigin", "*");
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+
+    <!-- JS -->
+    <script src="assets/js/main.js"></script>
 
 </body>
+
 </html>
